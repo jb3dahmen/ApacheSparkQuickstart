@@ -24,6 +24,8 @@ Imagine you are creating an analytics system that handles terabytes of video str
 
 Databricks is a [Unified Analytics Platform](https://databricks.com/product/data-lakehouse) that is built on top of Spark. Databricks provides a user friendly environment that lets you easily develop and collaborate with tools like Spark. If you open a Databricks notebook which behaves similarly to a Jupyter notebook you can easily access all the tools Databricks has to offer including Apache Spark.
 
+<img src="sparkdatabricks.png" alt="an image showing that Databricks is built on top of Spark" width="400"/>
+
 > **Check Your Understanding:** Think of some other scenarios and use cases where Apache Spark could be applied in addition to the ones mentioned above.
 
 ## Spark Session
@@ -34,7 +36,11 @@ If you type the word `spark` in a notebook cell and then run it you will see out
 type(spark)
 ```
 
-`spark` gives you access to an object that will unlock all of Sparks functionality within the context of a Databricks notebook. It includes a ton of different functionality but for now we are just going to focus on the basics. Think of the `SparkSession` object like a key to all that Apache Spark has to offer.
+`spark` gives you access to an object that will unlock all of Sparks functionality within the context of a Databricks notebook. It includes a ton of different functionality but for now we are just going to focus on the basics. Think of the `SparkSession` object like a key to much of the data manipulation resources that Spark has to offer.
+
+<img src="sparksession.png" alt="an image showing a SparkSessino object as a key unlocking data storage and manipulation functionality within Apach Spark" width="400"/>
+
+
 
 ## DataFrame
 
