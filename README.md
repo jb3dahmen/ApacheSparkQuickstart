@@ -1,3 +1,3 @@
-## Apache Spark Quick Start
+## Apache Spark Quickstart
 
 
