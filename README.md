@@ -36,15 +36,17 @@ type(spark)
 
 `spark` gives you access to an object that will unlock all of Sparks functionality within the context of a Databricks notebook. It includes a ton of different functionality but for now we are just going to focus on the basics. Think of the `SparkSession` object like a key to all that Apache Spark has to offer.
 
-- insert key image here
-
 ## DataFrame
 
 ### Creating a DataFrame from Data
 
 In order to easily store and manipulate data Apache Spark uses a data structure called a DataFrame. [DataFrame in Apache Spark](https://spark.apache.org/docs/latest/sql-programming-guide.html) is very similar to the idea of a DataFrame in [pandas and R](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html). You can think of it like a programmatic representation of an excel sheet or database table where data is organized in rows and named columns. 
 
--insert table here
+|  | name | age | favorite_food |
+|---|------|-----|---------------|
+| 1 | Jess | 30  | curry         |
+| 2 | Tara | 1   | peanuts       |
+| 3 | Nova | 6   | chicken       |
 
 However, this data structure is much more powerful because under the hood your data is distributed which makes it very fast and optimized for large amounts of data compared to a typical pandas DataFrame. The cool part is that you can get all of this functionality very easily and not have to worry about the details if you don't want to. In your notebook type the code below, before you run it what do you think this line of code does?
 
@@ -53,9 +55,15 @@ iot_df = spark.read.json("/databricks-datasets/iot/iot_devices.json")
 iot_df.first()
 ```
 
-Databricks provides several example data files you can use to learn. In the example above we use the Internet of Things (IOT) JSON data file which contains examples of data you might get from an IOT device such as device name or battery level. You'll notice that we first used the `spark` command which gave us a `SparkSession` object. From there we were able to access to spark’s file reading functionality using the `read.json()` method. This method will read in a JSON file and return a DataFrame object which we store in the variable `iot_df`. After you run this command imagine this DataFrame exists in memory:
+Databricks provides several example data files you can use to learn. In the example above we use the Internet of Things (IOT) JSON data file which contains examples of data you might get from an IOT device such as device name or battery level. You'll notice that we first used the `spark` command which gave us a `SparkSession` object. From there we were able to access to spark’s file reading functionality using the `read.json()` method (there are several [other ways to read and create data](https://spark.apache.org/docs/2.3.0/sql-programming-guide.html#data-sources) using Spark). This method will read in a JSON file and return a DataFrame object which we store in the variable `iot_df`. After you run this command imagine something like this table exists in memory:
 
-Insert diagram
+**IOT Device Readings**
+
+| battery_level | cn            | humidity | ... |
+|---------------|---------------|----------| --- |
+| 8             | United States | 50       | ... |
+| 7             | Norway        | 70       | ... |
+
 
 On the second line we use the  `first()` method of the DataFrame. As the output indicates this returns the first `Row` of the object. 
 
