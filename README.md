@@ -11,7 +11,7 @@ After completing this lesson you will be able to:
 
 1. Describe what Apache Spark is and some fundamental use cases
 1. Recognize what an Apache Spark Session object is
-1. Identify a key Apache Spark data structures called a DataFrame
+1. Identify a key Apache Spark data structure called a DataFrame
 1. Execute basic operations to manipulate DataFrames
 
 ## What is Apache Spark?
@@ -54,14 +54,14 @@ In order to easily store and manipulate data Apache Spark uses a data structure 
 | 2 | Tara | 1   | peanuts       |
 | 3 | Nova | 6   | chicken       |
 
-However, this data structure is much more powerful because under the hood your data is distributed which makes it very fast and optimized for large amounts of data compared to a typical pandas DataFrame. The cool part is that you can get all of this functionality very easily and not have to worry about the details if you don't want to. In your notebook type the code below, before you run it what do you think this line of code does?
+However, this data structure is much more powerful because under the hood it is distributed which makes it very fast and optimized for large amounts of data compared to a typical pandas DataFrame. **Databricks and Spark let you split the computational load across multiple computing resources and the cool part is that you can get all of this functionality very easily and not have to worry about the details of distributed computing if you don't want to.** Let's see this in action, in your notebook type the code below, before you run it what do you think this line of code does?
 
 ```python
 iot_df = spark.read.json("/databricks-datasets/iot/iot_devices.json")
 iot_df.first()
 ```
 
-Databricks provides several example data files you can use to learn. In the example above we use the Internet of Things (IOT) JSON data file which contains examples of data you might get from an IOT device such as device name or battery level. You'll notice that we first used the `spark` command which gave us a `SparkSession` object. From there we were able to access to spark’s file reading functionality using the `read.json()` method (there are several [other ways to read and create data](https://spark.apache.org/docs/2.3.0/sql-programming-guide.html#data-sources) using Spark). This method will read in a JSON file and return a DataFrame object which we store in the variable `iot_df`. After you run this command imagine something like this table exists in memory:
+Databricks provides several example data files you can use to learn. In the example above we use the Internet of Things (IOT) JSON data file which contains examples of data you might get from an IOT device such as device name or battery level. You'll notice that we first used the `spark` command which gave us a `SparkSession` object. From there we were able to access to spark’s file reading functionality using the `read.json()` method (there are several [other ways to read and create data](https://spark.apache.org/docs/2.3.0/sql-programming-guide.html#data-sources) using Spark). This method will read in a JSON file and return a DataFrame object which we store in the variable `iot_df`. After you run this command imagine something like this table is created:
 
 **IOT Device Readings**
 
@@ -79,7 +79,7 @@ On the second line we use the  `first()` method of the DataFrame. As the output 
 
 Now that we have our data stored in a DataFrame we can use all of its powerful functionality to view and manipulate our data.
 
-Let's say we want to use our IOT data and get information on all the devices that gave a humidity level reading of greater than 50%. We can use the `filter` method to achieve this and other conditional based filtering queries. `filter` takes in a condition that can be expressed using SQL like syntax (similar to how it's done in pandas).
+Let's say we want to use our IOT data and get information on all the devices that gave a humidity level reading of greater than 50%. We can use the `filter` method to achieve this and other conditional based filtering queries. `filter` takes in a condition that can be expressed either with pandas or SQL like syntax.
 
 ```python
 #get all the entries where the humidity reading is greater than 50%
